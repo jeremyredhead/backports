@@ -7,7 +7,7 @@ unless Proc.method_defined? :curry
     def curry(argc = nil)
       min_argc = arity < 0 ? -arity - 1 : arity
       argc ||= min_argc
-      if lambda? and arity < 0 ? argc < min_argc : argc != arity
+      if lambda? && arity < 0 ? argc < min_argc : argc != arity
         raise ArgumentError, "wrong number of arguments (#{argc} for #{min_argc})"
       end
       creator = lambda? ? :lambda : :proc

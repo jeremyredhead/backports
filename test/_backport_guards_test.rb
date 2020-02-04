@@ -16,7 +16,7 @@ module Kernel
   alias_method :require_without_bogus_extension, :require
   alias_method :require, :require_with_bogus_extension
 
-  if defined? BasicObject and BasicObject.superclass
+  if defined? BasicObject && BasicObject.superclass
     BasicObject.send :undef_method, :require
     BasicObject.send :undef_method, :require_with_bogus_extension
   end
