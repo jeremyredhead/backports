@@ -11,4 +11,3 @@ unless Struct.method_defined? :dig
     end
   end
 end
-

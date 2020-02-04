@@ -10,7 +10,7 @@ if (({}.default_proc = nil) rescue true)
         self.default = nil
         self
       else
-        self.default_proc_without_nil=(proc)
+        self.default_proc_without_nil = (proc)
       end
     end
     Backports.alias_method_chain(self, :default_proc=, :nil)

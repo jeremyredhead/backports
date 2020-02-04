@@ -15,9 +15,9 @@ unless Enumerable.method_defined? :cycle
           yield elem
         end
         if n
-          (n-1).times { cache.each{|e| yield e } }
+          (n - 1).times { cache.each { |e| yield e } }
         else
-          loop        { cache.each{|e| yield e } }
+          loop { cache.each { |e| yield e } }
         end unless cache.empty?
       end
       nil

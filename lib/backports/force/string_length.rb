@@ -6,6 +6,6 @@ class String
     def length
       unpack('U*').length
     end
-    alias_method :size,       :length
+    alias_method :size, :length
   end
 end

@@ -12,7 +12,7 @@ unless Enumerable.method_defined?(:to_h)
         if key_value.size != 2
           raise ArgumentError, "element has wrong array length (expected 2, was #{key_value.size})"
         end
-        h[ key_value[0] ] = key_value[1]
+        h[key_value[0]] = key_value[1]
       end
       h
     end

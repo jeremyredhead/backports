@@ -22,7 +22,7 @@ unless Enumerable.method_defined? :lazy
     end
 
     class Lazy < Enumerator
-      @@done = :__backports_lazy_enumeration_done__   # used internally to bail out of an iteration
+      @@done = :__backports_lazy_enumeration_done__ # used internally to bail out of an iteration
       @@lazy_with_no_block = Struct.new(:object, :method, :args) # used internally to create lazy without block
 
       def initialize(obj)
@@ -81,7 +81,7 @@ unless Enumerable.method_defined? :lazy
 
       def chunk(*)
         super.lazy
-      end if Enumerable.method_defined?(:chunk) && ![].lazy.chunk{}.is_a?(Lazy)
+      end if Enumerable.method_defined?(:chunk) && ![].lazy.chunk {}.is_a?(Lazy)
 
       def map
         raise ArgumentError, 'tried to call lazy map without a block' unless block_given?
@@ -167,7 +167,7 @@ unless Enumerable.method_defined? :lazy
           result = yield(*values)
           ary = Backports.is_array?(result)
           if ary || (result.respond_to?(:each) && result.respond_to?(:force))
-            (ary || result).each{|x| yielder << x }
+            (ary || result).each { |x| yielder << x }
           else
             yielder << result
           end
@@ -177,14 +177,14 @@ unless Enumerable.method_defined? :lazy
 
       def zip(*args)
         return super if block_given?
-        arys = args.map{ |arg| Backports.is_array?(arg) }
+        arys = args.map { |arg| Backports.is_array?(arg) }
         if arys.all?
           # Handle trivial case of multiple array arguments separately
           # by avoiding Enumerator#next for efficiency & compatibility
           Lazy.new(self) do |yielder, *values|
             data = yielder.backports_memo ||= {:iter => 0}
             values = values.first unless values.size > 1
-            yielder << arys.map{|ary| ary[data[:iter]]}.unshift(values)
+            yielder << arys.map { |ary| ary[data[:iter]] }.unshift(values)
             data[:iter] += 1
           end
         else
@@ -207,6 +207,7 @@ unless Enumerable.method_defined? :lazy
       end
 
       protected
+
       def __set_inspect(method, args = nil, receiver = nil)
         @method = method
         @args = args

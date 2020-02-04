@@ -7,14 +7,14 @@ unless ([[]].flatten(1) rescue false)
   class Array
     # Recursively flatten any contained Arrays into an one-dimensional result.
     # Adapted from rubinius'
-    def flatten_with_optional_argument(level=-1)
+    def flatten_with_optional_argument(level = -1)
       dup.flatten!(level) || self
     end
 
     # Flattens self in place as #flatten. If no changes are
     # made, returns nil, otherwise self.
     # Adapted from rubinius'
-    def flatten_with_optional_argument!(level=-1)
+    def flatten_with_optional_argument!(level = -1)
       level = Backports.coerce_to_int(level)
       return flatten_without_optional_argument! if level < 0
 

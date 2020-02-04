@@ -14,11 +14,11 @@ unless Range.method_defined? :bsearch
 
       midpoint = nil
       if from.is_a?(Integer) && to.is_a?(Integer)
-        convert = Proc.new{ midpoint }
+        convert = Proc.new { midpoint }
       else
         from = Backports.float_to_integer(from.to_f)
         to   = Backports.float_to_integer(to.to_f)
-        convert = Proc.new{ Backport.integer_to_float(midpoint) }
+        convert = Proc.new { Backport.integer_to_float(midpoint) }
       end
       to -= 1 if exclude_end?
       satisfied = nil

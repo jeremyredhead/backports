@@ -19,8 +19,8 @@ module Backports
       # Generates a completely new state out of the previous one.
       def next_state
         STATE_SIZE.times do |i|
-          mix = @state[i] & 0x80000000 | @state[i+1 - STATE_SIZE] & 0x7fffffff
-          @state[i] = @state[i+OFFSET - STATE_SIZE] ^ (mix >> 1)
+          mix = @state[i] & 0x80000000 | @state[i + 1 - STATE_SIZE] & 0x7fffffff
+          @state[i] = @state[i + OFFSET - STATE_SIZE] ^ (mix >> 1)
           @state[i] ^= 0x9908b0df if mix.odd?
         end
         @last_read = -1
@@ -36,24 +36,24 @@ module Backports
           @state = Array.new(STATE_SIZE)
           @state[0] = seed & PAD_32_BITS
           (1..LAST_STATE).each do |i|
-            @state[i] = (1812433253 * (@state[i-1]  ^ @state[i-1]>>30) + i)& PAD_32_BITS
+            @state[i] = (1812433253 * (@state[i - 1] ^ @state[i - 1] >> 30) + i) & PAD_32_BITS
           end
           @last_read = LAST_STATE
         when Array
           self.seed = 19650218
-          i=1
-          j=0
+          i = 1
+          j = 0
           [STATE_SIZE, seed.size].max.times do
-            @state[i] = (@state[i] ^ (@state[i-1] ^ @state[i-1]>>30) * 1664525) + j + seed[j] & PAD_32_BITS
-            if (i+=1) >= STATE_SIZE
+            @state[i] = (@state[i] ^ (@state[i - 1] ^ @state[i - 1] >> 30) * 1664525) + j + seed[j] & PAD_32_BITS
+            if (i += 1) >= STATE_SIZE
               @state[0] = @state[-1]
               i = 1
             end
-            j = 0 if (j+=1) >= seed.size
+            j = 0 if (j += 1) >= seed.size
           end
-          (STATE_SIZE-1).times do
-            @state[i] = (@state[i] ^ (@state[i-1] ^ @state[i-1]>>30) * 1566083941) - i & PAD_32_BITS
-            if (i+=1) >= STATE_SIZE
+          (STATE_SIZE - 1).times do
+            @state[i] = (@state[i] ^ (@state[i - 1] ^ @state[i - 1] >> 30) * 1566083941) - i & PAD_32_BITS
+            if (i += 1) >= STATE_SIZE
               @state[0] = @state[-1]
               i = 1
             end

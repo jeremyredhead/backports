@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 begin
-  File.open(__FILE__, :mode => 'r'){}
+  File.open(__FILE__, :mode => 'r') {}
 rescue TypeError
   require 'backports/tools/alias_method_chain'
   require 'backports/tools/io'
@@ -10,7 +10,7 @@ rescue TypeError
     mode, perm = Backports.combine_mode_perm_and_option(mode, perm_or_options)
     perm ||= 0666 # Avoid error on Rubinius, see issue #52
     if block_given?
-      open_without_options_hash(file, mode, perm){|f| yield f}
+      open_without_options_hash(file, mode, perm) { |f| yield f }
     else
       open_without_options_hash(file, mode, perm)
     end

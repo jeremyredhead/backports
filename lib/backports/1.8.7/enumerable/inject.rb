@@ -8,7 +8,7 @@ unless ((1..2).inject(:+) rescue false)
     def inject_with_symbol(*args, &block)
       return inject_without_symbol(*args, &block) if block_given? && args.size <= 1
       method = args.pop
-      inject_without_symbol(*args) {|memo, obj| memo.send(method, obj)}
+      inject_without_symbol(*args) { |memo, obj| memo.send(method, obj) }
     end
     Backports.alias_method_chain self, :inject, :symbol
   end

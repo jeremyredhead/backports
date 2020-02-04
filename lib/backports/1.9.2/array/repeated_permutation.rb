@@ -16,8 +16,8 @@ unless Array.method_defined? :repeated_permutation
         copy = dup
         indices = Array.new(num, 0)
         indices[-1] = size
-        while dec = indices.index{|x| x != 0}
-          indices.fill size-1, 0, dec
+        while dec = indices.index { |x| x != 0 }
+          indices.fill size - 1, 0, dec
           indices[dec] -= 1
           yield copy.values_at(*indices)
         end

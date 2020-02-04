@@ -14,7 +14,7 @@ unless Integer.method_defined?(:bit_length) || Bignum.method_defined?(:bit_lengt
       else
         smaller = -smaller
       end
-      n + (1..8 * 42.size).bsearch{|i| smaller <= (1 << i) }
+      n + (1..8 * 42.size).bsearch { |i| smaller <= (1 << i) }
     end
   end
 end

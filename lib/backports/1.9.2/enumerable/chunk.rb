@@ -9,10 +9,10 @@ unless Enumerable.method_defined? :chunk
       ::Enumerator.new do |yielder|
         previous = nil
         accumulate = []
-        block = initial_state.nil? ? original_block : Proc.new{|val| original_block.call(val, initial_state.clone)}
+        block = initial_state.nil? ? original_block : Proc.new { |val| original_block.call(val, initial_state.clone) }
         each do |val|
           key = block.call(val)
-          if key.nil? || (key.is_a?(Symbol) && key.to_s[0,1] == '_')
+          if key.nil? || (key.is_a?(Symbol) && key.to_s[0, 1] == '_')
             yielder.yield [previous, accumulate] unless accumulate.empty?
             accumulate = []
             previous = nil

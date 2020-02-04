@@ -5,7 +5,7 @@ unless Enumerable.method_defined? :minmax
 
   module Enumerable
     def minmax
-      return minmax{|a,b| a <=> b} unless block_given?
+      return minmax { |a, b| a <=> b } unless block_given?
       first_time = true
       min, max = nil
       each do |object|

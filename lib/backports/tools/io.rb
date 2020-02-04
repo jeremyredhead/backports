@@ -20,11 +20,11 @@ module Backports
         raise ArgumentError, 'both textmode and binmode specified'
       end
       case
-        when !options[:binmode]
-        when mode.is_a?(String)
-          mode.insert(1, 'b')
-        else
-          mode |= File::Constants::BINARY
+      when !options[:binmode]
+      when mode.is_a?(String)
+        mode.insert(1, 'b')
+      else
+        mode |= File::Constants::BINARY
       end
     end
     mode
@@ -47,7 +47,7 @@ module Backports
     offset, options = nil, offset if offset.respond_to?(:to_hash) && options == Backports::Undefined
     options = {} if options == Backports::Undefined
     options = coerce_to_hash(options)
-    File.open(filename, 'a+'){} if offset # insure existence
+    File.open(filename, 'a+') {} if offset # insure existence
     options = {:mode => offset.nil? ? 'w' : 'r+'}.merge(options)
     args = options[:open_args] || [options]
     File.open(filename, *Backports.combine_mode_perm_and_option(*args)) do |f|

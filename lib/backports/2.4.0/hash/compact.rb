@@ -10,6 +10,6 @@ class Hash
   end unless method_defined? :compact
 
   def compact!
-    reject! {|_key, value| value == nil}
+    reject! { |_key, value| value == nil }
   end unless method_defined? :compact!
 end

@@ -28,9 +28,9 @@ module Backports
       last_arg = []
       if arity < 0
         last_arg = ['*rest']
-        arity = -1-arity
+        arity = -1 - arity
       end
-      arg_sequence = ((0...arity).map{|i| "arg_#{i}"} + last_arg + ['&block']).join(', ')
+      arg_sequence = ((0...arity).map { |i| "arg_#{i}" } + last_arg + ['&block']).join(', ')
 
       alias_method_chain(mod, selector, :optional_block) do |aliased_target, punctuation|
         mod.module_eval <<-end_eval, __FILE__, __LINE__ + 1

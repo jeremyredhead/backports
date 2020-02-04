@@ -10,5 +10,4 @@ module Enumerable
       inject { |sum, element| sum + element } || identity
     end
   end unless method_defined? :sum
-
 end

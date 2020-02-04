@@ -12,7 +12,7 @@ unless Enumerable.method_defined? :grep_v
         end
         acc
       else
-        reject {|v| pattern === v }
+        reject { |v| pattern === v }
       end
     end
   end

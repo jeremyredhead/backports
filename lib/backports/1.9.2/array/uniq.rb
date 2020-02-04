@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-unless [1,2].uniq{}.size == 1
+unless [1, 2].uniq {}.size == 1
   require 'backports/tools/alias_method_chain'
 
   class Array
@@ -17,14 +17,14 @@ unless [1,2].uniq{}.size == 1
   end
 end
 
-unless [1,2].uniq!{}
+unless [1, 2].uniq! {}
   require 'backports/tools/alias_method_chain'
 
   class Array
     def uniq_with_block!
       replace self if frozen? # force error
       return uniq_without_block! unless block_given?
-      u = uniq{|e| yield e}
+      u = uniq { |e| yield e }
       replace u unless u.size == size
     end
     Backports.alias_method_chain self, :uniq!, :block

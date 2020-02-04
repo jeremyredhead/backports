@@ -10,9 +10,9 @@ module Backports
         def include?(feature)
           return true if @@our_loads[feature]
           # Assume backported features are Ruby libraries (i.e. not C)
-          @loaded ||= $LOADED_FEATURES.group_by{|p| File.basename(p, '.rb')}
+          @loaded ||= $LOADED_FEATURES.group_by { |p| File.basename(p, '.rb') }
           if fullpaths = @loaded[File.basename(feature, '.rb')]
-            fullpaths.any?{|fullpath|
+            fullpaths.any? { |fullpath|
               base_dir, = fullpath.partition("/#{feature}")
               $LOAD_PATH.include?(base_dir)
             }
@@ -40,22 +40,22 @@ module Backports
     class << self
       attr_accessor :extended_lib
 
-      def extend_relative relative_dir='stdlib'
+      def extend_relative relative_dir = 'stdlib'
         loaded = Backports::StdLib::LoadedFeatures.new
-        dir = File.expand_path(relative_dir, File.dirname(caller.first.split(/:\d/,2).first))
-        Dir.entries(dir).
-          map{|f| Regexp.last_match(1) if /^(.*)\.rb$/ =~ f}.
-          compact.
-          each do |f|
-            path = File.expand_path(f, dir)
-            if loaded.include?(f)
-              require path
-            else
-              @extended_lib[f] << path
-            end
+        dir = File.expand_path(relative_dir, File.dirname(caller.first.split(/:\d/, 2).first))
+        Dir.entries(dir)
+           .map { |f| Regexp.last_match(1) if /^(.*)\.rb$/ =~ f }
+           .compact
+           .each do |f|
+          path = File.expand_path(f, dir)
+          if loaded.include?(f)
+            require path
+          else
+            @extended_lib[f] << path
           end
+        end
       end
     end
-    self.extended_lib ||= Hash.new{|h, k| h[k] = []}
+    self.extended_lib ||= Hash.new { |h, k| h[k] = [] }
   end
 end

@@ -13,7 +13,7 @@ unless String.method_defined? :rpartition
         match = Regexp.last_match
         [match.pre_match, match[0], match.post_match]
       else
-        last = i+pattern.length
+        last = i + pattern.length
         [self[0...i], self[i...last], self[last...length]]
       end
     end

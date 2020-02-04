@@ -2,7 +2,7 @@
 
 fd = IO.sysopen(__FILE__)
 begin
-  IO.open(fd, :mode => 'r'){}
+  IO.open(fd, :mode => 'r') {}
 rescue TypeError
   require 'backports/tools/io'
   require 'backports/tools/alias_method_chain'
@@ -14,7 +14,7 @@ rescue TypeError
         args = [fd, Backports.combine_mode_and_option(mode, options)]
       end
       if block_given?
-        open_without_options_hash(*args){|f| yield f}
+        open_without_options_hash(*args) { |f| yield f }
       else
         open_without_options_hash(*args)
       end

@@ -31,7 +31,7 @@ unless Object.const_defined? :BasicObject
     end
 
     class << self
-      def === (cmp)
+      def ===(cmp)
         true
       end
 

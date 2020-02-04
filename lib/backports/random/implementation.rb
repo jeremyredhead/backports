@@ -22,21 +22,21 @@ module Backports
       def srand(new_seed = 0)
         new_seed = Backports.coerce_to_int(new_seed)
         old, @seed = @seed, new_seed.nonzero? || ::Random.new_seed
-        @mt = MT19937[ @seed ]
+        @mt = MT19937[@seed]
         old
       end
 
       def rand(limit = Backports::Undefined)
         case limit
-          when Backports::Undefined
-            @mt.random_float
-          when Float
-            limit * @mt.random_float unless limit <= 0
-          when Range
-            _rand_range(limit)
-          else
-            limit = Backports.coerce_to_int(limit)
-            @mt.random_integer(limit) unless limit <= 0
+        when Backports::Undefined
+          @mt.random_float
+        when Float
+          limit * @mt.random_float unless limit <= 0
+        when Range
+          _rand_range(limit)
+        else
+          limit = Backports.coerce_to_int(limit)
+          @mt.random_integer(limit) unless limit <= 0
         end || raise(ArgumentError, "invalid argument #{limit}")
       end
 
@@ -63,7 +63,8 @@ module Backports
         @mt.marshal_load(ary)
       end
 
-    private
+      private
+
       def state
         @mt.state_as_bignum
       end

@@ -7,7 +7,7 @@ module Backports
     # No argument checking is done here either.
 
     class MT19937
-      FLOAT_FACTOR = 1.0/9007199254740992.0
+      FLOAT_FACTOR = 1.0 / 9007199254740992.0
       # generates a random number on [0,1) with 53-bit resolution
       def random_float
         ((random_32_bits >> 5) * 67108864.0 + (random_32_bits >> 6)) * FLOAT_FACTOR;
@@ -82,8 +82,9 @@ module Backports
         new(convert_seed(seed))
       end
 
-    private
-      MASK_BY = [1,2,4,8,16]
+      private
+
+      MASK_BY = [1, 2, 4, 8, 16]
       def mask_32_bits(n)
         MASK_BY.each do |shift|
           n |= n >> shift

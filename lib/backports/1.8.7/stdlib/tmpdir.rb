@@ -2,7 +2,7 @@
 
 unless Dir.respond_to? :mktmpdir
   class << Dir
-    def mktmpdir(prefix_suffix=nil, tmpdir=nil)
+    def mktmpdir(prefix_suffix = nil, tmpdir = nil)
       raise NoMethodError, "undefined method `mktmpdir' for Dir:Class; you must require 'tmpdir'" unless respond_to? :tmpdir
 
       case prefix_suffix

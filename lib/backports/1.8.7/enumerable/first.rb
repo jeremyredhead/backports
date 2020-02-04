@@ -6,7 +6,7 @@ unless Enumerable.method_defined? :first
   module Enumerable
     def first(n = Backports::Undefined)
       if n == Backports::Undefined
-        each{|obj| return obj}
+        each { |obj| return obj }
         nil
       else
         n = Backports.coerce_to_int(n)

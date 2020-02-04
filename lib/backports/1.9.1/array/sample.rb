@@ -10,13 +10,13 @@ unless Array.method_defined? :sample
       end
       rng = Backports.coerce_to_option(options, :random) unless options == Backports::Undefined
       generator = if rng.respond_to? :rand
-        Proc.new do |nb|
-          r = Backports::coerce_to_int(rng.rand(nb))
-          raise RangeError, "random generator returned #{r} which is not in 0...#{nb}" if r < 0 || r >= nb
-          r
-        end
-      else
-        Kernel.method(:rand)
+                    Proc.new do |nb|
+                      r = Backports::coerce_to_int(rng.rand(nb))
+                      raise RangeError, "random generator returned #{r} which is not in 0...#{nb}" if r < 0 || r >= nb
+                      r
+                    end
+                  else
+                    Kernel.method(:rand)
       end
       return self[generator.call(size)] if n == Backports::Undefined
       n = Backports.coerce_to_int(n)

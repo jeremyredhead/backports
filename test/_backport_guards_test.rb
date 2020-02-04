@@ -39,7 +39,7 @@ class AAA_TestBackportGuards < Test::Unit::TestCase
   # For some very strange reason, Hash[kvp.flatten] doesn't always work in 1.8.6??
   def to_hash(key_value_pairs)
     h = {}
-    key_value_pairs.each{|k,v| h[k] = v}
+    key_value_pairs.each { |k, v| h[k] = v }
     h
   end
 
@@ -47,28 +47,29 @@ class AAA_TestBackportGuards < Test::Unit::TestCase
   # For Ruby 1.8.7 or below, it returns all methods, so we can at least check we are not adding new methods needlessly
   def class_signature(klass)
     list =
-      (klass.instance_methods - EXCLUDE).map{|m| [m, klass.instance_method(m)] } +
-      (klass.methods - EXCLUDE).map{|m| [".#{m}", klass.method(m) ]}
-    list.select!{|name, method| method.source_location } if UnboundMethod.method_defined? :source_location
+      (klass.instance_methods - EXCLUDE).map { |m| [m, klass.instance_method(m)] } +
+      (klass.methods - EXCLUDE).map { |m| [".#{m}", klass.method(m)] }
+    list.select! { |name, method| method.source_location } if UnboundMethod.method_defined? :source_location
     to_hash(list)
   end
 
   CLASSES = [Array, Binding, Bignum, Dir, Comparable, Enumerable, FalseClass, Fixnum, Float, GC,
-      Hash, Integer, IO, Kernel, Math, MatchData, Method, Module, NilClass, Numeric,
-      ObjectSpace, Proc, Process, Range, Regexp, String, Struct, Symbol, TrueClass] +
-    [ENV, ARGF].map{|obj| class << obj; self; end }
+             Hash, Integer, IO, Kernel, Math, MatchData, Method, Module, NilClass, Numeric,
+             ObjectSpace, Proc, Process, Range, Regexp, String, Struct, Symbol, TrueClass
+] +
+            [ENV, ARGF].map { |obj| class << obj; self; end }
 
   case RUBY_VERSION
-    when '1.8.6'
-    when '1.8.7'
-      CLASSES << Enumerable::Enumerator
-    else
-      CLASSES << Enumerator
+  when '1.8.6'
+  when '1.8.7'
+    CLASSES << Enumerable::Enumerator
+  else
+    CLASSES << Enumerator
   end
 
   def digest
     to_hash(
-      CLASSES.map { |klass| [klass, class_signature(klass)] }
+        CLASSES.map { |klass| [klass, class_signature(klass)] }
     )
   end
 
@@ -113,7 +114,7 @@ class AAA_TestBackportGuards < Test::Unit::TestCase
 
   def test_setlib_load_correctly_after_requiring_backports
     path = File.expand_path('../../lib/backports/1.9.2/stdlib/matrix.rb', __FILE__)
-    assert_equal false,  $LOADED_FEATURES.include?(path)
+    assert_equal false, $LOADED_FEATURES.include?(path)
     assert_equal true,  require('matrix')
     assert_equal true,  $bogus.include?('matrix')
     assert_equal true,  $LOADED_FEATURES.include?(path)
@@ -145,6 +146,6 @@ class AAA_TestBackportGuards < Test::Unit::TestCase
     require 'set'
     require 'backports/1.8.7/array/each'
     require 'backports/1.8.7/enumerator/next'
-    assert_equal 1, [1,2,3].each.next # [Bug #70]
+    assert_equal 1, [1, 2, 3].each.next # [Bug #70]
   end
 end

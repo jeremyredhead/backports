@@ -11,6 +11,7 @@ module Backports
     end
 
     private
+
     def map_via_packing(nb, pack, unpack)
       result, = [nb.abs].pack(pack).unpack(unpack)
       nb < 0 ? -result : result

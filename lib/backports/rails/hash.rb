@@ -13,7 +13,7 @@ class Hash
 
   # Standard in rails. See official documentation[http://api.rubyonrails.org/classes/ActiveSupport/CoreExtensions/Hash/Keys.html]
   def symbolize_keys
-    Hash[map{|key,value| [(key.to_sym rescue key) || key, value] }]
+    Hash[map { |key, value| [(key.to_sym rescue key) || key, value] }]
   end unless method_defined? :symbolize_keys
 
   # Standard in rails. See official documentation[http://api.rubyonrails.org/classes/ActiveSupport/CoreExtensions/Hash/Keys.html]
@@ -23,7 +23,7 @@ class Hash
 
   # Standard in rails. See official documentation[http://api.rubyonrails.org/classes/ActiveSupport/CoreExtensions/Hash/Keys.html]
   def stringify_keys
-    Hash[map{|key,value| [key.to_s, value] }]
+    Hash[map { |key, value| [key.to_s, value] }]
   end unless method_defined? :stringify_keys
 
   # Standard in rails. See official documentation[http://api.rubyonrails.org/classes/ActiveSupport/CoreExtensions/Hash/Keys.html]
