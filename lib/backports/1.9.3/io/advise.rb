@@ -19,7 +19,7 @@ unless IO.method_defined? :advise
       when Symbol
         raise NotImplementedError, "Unsupported advice #{advice}"
       else
-        raise TypeError, "advice must be a Symbol"
+        raise TypeError, 'advice must be a Symbol'
       end
     end
   end

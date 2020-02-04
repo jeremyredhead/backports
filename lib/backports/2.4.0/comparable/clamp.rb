@@ -6,7 +6,7 @@ unless Comparable.method_defined? :clamp
   module Comparable
     def clamp(min, max)
       if Backports.coerce_to_comparison(min, max) > 0
-        raise ArgumentError, "min argument must be smaller than max argument"
+        raise ArgumentError, 'min argument must be smaller than max argument'
       end
       case Backports.coerce_to_comparison(self, min)
       when 0

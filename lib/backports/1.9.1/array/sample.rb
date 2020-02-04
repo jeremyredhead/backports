@@ -20,7 +20,7 @@ unless Array.method_defined? :sample
       end
       return self[generator.call(size)] if n == Backports::Undefined
       n = Backports.coerce_to_int(n)
-      raise ArgumentError, "negative array size" if n < 0
+      raise ArgumentError, 'negative array size' if n < 0
       n = size if n > size
       result = Array.new(self)
       n.times do |i|

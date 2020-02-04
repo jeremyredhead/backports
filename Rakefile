@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 begin
-  require "bundler/gem_tasks"
+  require 'bundler/gem_tasks'
 rescue LoadError
   # bundler not installed
 end
@@ -26,9 +26,9 @@ class SpecRunner
     result = `#{cmd}`
     match = result.match(/(\d+) files?, (\d+) examples?, (\d+) expectations?, (\d+) failures?, (\d+) errors?/)
     if match.nil?
-      puts "*** mspec returned with unexpected results:"
+      puts '*** mspec returned with unexpected results:'
       puts result
-      puts "Command was:", cmd
+      puts 'Command was:', cmd
     end
     _, ex, p, f, e = data = match.captures.map{|x| x.to_i}
     not_found << path if ex == 0
@@ -39,7 +39,7 @@ class SpecRunner
       puts cmd
       puts result
     else
-      print "."
+      print '.'
       STDOUT.flush
     end
   end
@@ -51,7 +51,7 @@ class SpecRunner
   end
 
   def report
-    puts "*** Overall:", stats.map{|a| a.join(' ')}.join(', ')
+    puts '*** Overall:', stats.map{|a| a.join(' ')}.join(', ')
     puts "No spec found for #{@not_found.join(', ')}" unless @not_found.empty?
   end
 

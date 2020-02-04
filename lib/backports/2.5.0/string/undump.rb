@@ -35,7 +35,7 @@ unless String.method_defined? :undump
       if RUBY_VERSION >= '1.9'
         # Look-arounds are not supported in ruby 1.8. Using a string with Regexp avoids the SyntaxError in 1.8.7
         # \xY, \x3Y and finishing with \x
-        regex = Regexp.new("(?<!\\)(?:\\\\)*\\x(?![0-9a-f]{2})".gsub('\\', '\\\\\\\\'), Regexp::IGNORECASE)
+        regex = Regexp.new('(?<!\\)(?:\\\\)*\\x(?![0-9a-f]{2})'.gsub('\\', '\\\\\\\\'), Regexp::IGNORECASE)
         raise 'invalid hex escape' if string[regex]
       end
 
@@ -57,7 +57,7 @@ unless String.method_defined? :undump
         begin
           Encoding.find(encoding)
         rescue ArgumentError
-          raise "dumped string has unknown encoding name"
+          raise 'dumped string has unknown encoding name'
         end
         result = result.force_encoding(encoding)
       end

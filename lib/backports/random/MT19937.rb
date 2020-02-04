@@ -60,7 +60,7 @@ module Backports
           end
           @state[0] = 0x80000000
         else
-          raise ArgumentError, "Seed must be an Integer or an Array"
+          raise ArgumentError, 'Seed must be an Integer or an Array'
         end
       end
 

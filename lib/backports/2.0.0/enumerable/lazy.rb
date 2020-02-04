@@ -30,7 +30,7 @@ unless Enumerable.method_defined? :lazy
           @inspect_info = obj
           return super(@receiver = obj.object, @method = obj.method || :each, * @args = obj.args)
         end
-        raise ArgumentError, "must supply a block" unless block_given?
+        raise ArgumentError, 'must supply a block' unless block_given?
         @receiver = obj
         super() do |yielder, *args|
           catch @@done do
@@ -84,7 +84,7 @@ unless Enumerable.method_defined? :lazy
       end if Enumerable.method_defined?(:chunk) && ![].lazy.chunk{}.is_a?(Lazy)
 
       def map
-        raise ArgumentError, "tried to call lazy map without a block" unless block_given?
+        raise ArgumentError, 'tried to call lazy map without a block' unless block_given?
         Lazy.new(self) do |yielder, *values|
           yielder << yield(*values)
         end.__set_inspect :map
@@ -92,7 +92,7 @@ unless Enumerable.method_defined? :lazy
       alias_method :collect, :map
 
       def select
-        raise ArgumentError, "tried to call lazy select without a block" unless block_given?
+        raise ArgumentError, 'tried to call lazy select without a block' unless block_given?
         Lazy.new(self) do |yielder, *values|
           values = values.first unless values.size > 1
           yielder.yield values if yield values
@@ -101,7 +101,7 @@ unless Enumerable.method_defined? :lazy
       alias_method :find_all, :select
 
       def reject
-        raise ArgumentError, "tried to call lazy reject without a block" unless block_given?
+        raise ArgumentError, 'tried to call lazy reject without a block' unless block_given?
         Lazy.new(self) do |yielder, *values|
           values = values.first unless values.size > 1
           yielder.yield(values) unless yield values
@@ -136,7 +136,7 @@ unless Enumerable.method_defined? :lazy
       end
 
       def drop_while
-        raise ArgumentError, "tried to call lazy drop_while without a block" unless block_given?
+        raise ArgumentError, 'tried to call lazy drop_while without a block' unless block_given?
         Lazy.new(self) do |yielder, *values|
           data = yielder.backports_memo ||= {:dropping => true}
           yielder.yield(*values) unless data[:dropping] &&= yield(*values)
@@ -154,7 +154,7 @@ unless Enumerable.method_defined? :lazy
       end
 
       def take_while
-        raise ArgumentError, "tried to call lazy take_while without a block" unless block_given?
+        raise ArgumentError, 'tried to call lazy take_while without a block' unless block_given?
         Lazy.new(self) do |yielder, *values|
           throw @@done unless yield(*values)
           yielder.yield(*values)
@@ -162,7 +162,7 @@ unless Enumerable.method_defined? :lazy
       end
 
       def flat_map
-        raise ArgumentError, "tried to call lazy flat_map without a block" unless block_given?
+        raise ArgumentError, 'tried to call lazy flat_map without a block' unless block_given?
         Lazy.new(self) do |yielder, *values|
           result = yield(*values)
           ary = Backports.is_array?(result)

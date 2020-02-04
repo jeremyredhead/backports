@@ -5,9 +5,9 @@ require './test/test_helper'
 
 class TestLazyEnumerator < Test::Unit::TestCase
   def setup
-    require "backports/2.0.0/enumerable/lazy"
-    require "backports/1.8.7/enumerable"
-    require "backports/1.8.7/io/each"
+    require 'backports/2.0.0/enumerable/lazy'
+    require 'backports/1.8.7/enumerable'
+    require 'backports/1.8.7/io/each'
   end
 
   class Step
@@ -42,7 +42,7 @@ class TestLazyEnumerator < Test::Unit::TestCase
   def test_each_line
     name = lineno = nil
     File.open(__FILE__) do |f|
-      f.each("").map do |paragraph|
+      f.each('').map do |paragraph|
         paragraph[/\A\s*(.*)/, 1]
       end.find do |line|
         if name = line[/^class\s+(\S+)/, 1]
@@ -57,7 +57,7 @@ class TestLazyEnumerator < Test::Unit::TestCase
     name = lineno = nil
     File.open(__FILE__) do |f|
       ### Backports: Modified to avoid bug of Enumerator#each not passing args in MRI < 2.0
-      f.each("").lazy.map do |paragraph| #
+      f.each('').lazy.map do |paragraph| #
         paragraph[/\A\s*(.*)/, 1]
       end.find do |line|
         if name = line[/^class\s+(\S+)/, 1]
@@ -78,10 +78,10 @@ class TestLazyEnumerator < Test::Unit::TestCase
     assert_equal(4, a.current)
 
     a = Step.new(['word', nil, 1])
-    assert_raise(TypeError) {a.select {|x| "x"+x}.first}
+    assert_raise(TypeError) {a.select {|x| 'x'+x}.first}
     assert_equal(nil, a.current)
-    assert_equal("word", a.lazy.select {|x| "x"+x}.first)
-    assert_equal("word", a.current)
+    assert_equal('word', a.lazy.select {|x| 'x'+x}.first)
+    assert_equal('word', a.current)
   end
 
   def test_select_multiple_values
@@ -91,7 +91,7 @@ class TestLazyEnumerator < Test::Unit::TestCase
       end
     }
     ### Backport: non lazy version differs on JRuby and MRI
-    assert_equal([[2, "2"], [4, "4"]],
+    assert_equal([[2, '2'], [4, '4']],
                  e.lazy.select {|x| x[0] % 2 == 0}.force)
   end
 
@@ -113,11 +113,11 @@ class TestLazyEnumerator < Test::Unit::TestCase
 
   def test_flat_map_nested
     a = Step.new(1..3)
-    assert_equal([1, "a"],
-                 a.flat_map {|x| ("a".."c").map {|y| [x, y]}}.first)
+    assert_equal([1, 'a'],
+                 a.flat_map {|x| ('a'..'c').map {|y| [x, y]}}.first)
     assert_equal(3, a.current)
-    assert_equal([1, "a"],
-                 a.lazy.flat_map {|x| ("a".."c").lazy.map {|y| [x, y]}}.first)
+    assert_equal([1, 'a'],
+                 a.lazy.flat_map {|x| ('a'..'c').lazy.map {|y| [x, y]}}.first)
     assert_equal(1, a.current)
   end if [].respond_to?(:flat_map)
 
@@ -138,8 +138,8 @@ class TestLazyEnumerator < Test::Unit::TestCase
   end if [].respond_to?(:flat_map)
 
   def test_flat_map_non_array
-    assert_equal(["1", "2", "3"], [1, 2, 3].flat_map {|x| x.to_s})
-    assert_equal(["1", "2", "3"], [1, 2, 3].lazy.flat_map {|x| x.to_s}.force)
+    assert_equal(['1', '2', '3'], [1, 2, 3].flat_map {|x| x.to_s})
+    assert_equal(['1', '2', '3'], [1, 2, 3].lazy.flat_map {|x| x.to_s}.force)
   end if [].respond_to?(:flat_map)
 
   def test_flat_map_hash
@@ -168,7 +168,7 @@ class TestLazyEnumerator < Test::Unit::TestCase
       end
     }
     ### Backport: non lazy version differs on JRuby and MRI
-    assert_equal([[2, "2"], [4, "4"]],
+    assert_equal([[2, '2'], [4, '4']],
                  e.lazy.reject {|x| x[0] % 2 != 0}.force)
   end
 
@@ -195,24 +195,24 @@ class TestLazyEnumerator < Test::Unit::TestCase
       }
     }
     ### Backport: non lazy version differs on JRuby and MRI
-    assert_equal([[2, "2"]], e.lazy.grep(proc {|x| x == [2, "2"]}).force)
-    assert_equal(["22"],
-                 e.lazy.grep(proc {|x| x == [2, "2"]}, &:join).force)
+    assert_equal([[2, '2']], e.lazy.grep(proc {|x| x == [2, '2']}).force)
+    assert_equal(['22'],
+                 e.lazy.grep(proc {|x| x == [2, '2']}, &:join).force)
   end
 
   def test_zip
     a = Step.new(1..3)
-    assert_equal([1, "a"], a.zip("a".."c").first)
+    assert_equal([1, 'a'], a.zip('a'..'c').first)
     assert_equal(3, a.current)
-    assert_equal([1, "a"], a.lazy.zip("a".."c").first)
+    assert_equal([1, 'a'], a.lazy.zip('a'..'c').first)
     assert_equal(1, a.current)
   end
 
   def test_zip_short_arg
     a = Step.new(1..5)
-    assert_equal([5, nil], a.zip("a".."c").last)
+    assert_equal([5, nil], a.zip('a'..'c').last)
     enum = [42].to_enum.next
-    assert_equal([5, nil], a.lazy.zip("a".."d").force.last)  ### Backport: modified to avoid fact that 1.8.x's Enumerator auto-rewind
+    assert_equal([5, nil], a.lazy.zip('a'..'d').force.last)  ### Backport: modified to avoid fact that 1.8.x's Enumerator auto-rewind
   end
 
   def test_zip_without_arg
@@ -233,8 +233,8 @@ class TestLazyEnumerator < Test::Unit::TestCase
     # zip should be eager when a block is given
     a = Step.new(1..3)
     ary = []
-    assert_equal(nil, a.lazy.zip("a".."c") {|x, y| ary << [x, y]})
-    assert_equal(a.zip("a".."c"), ary)
+    assert_equal(nil, a.lazy.zip('a'..'c') {|x, y| ary << [x, y]})
+    assert_equal(a.zip('a'..'c'), ary)
     assert_equal(3, a.current)
   end
 
@@ -345,9 +345,9 @@ class TestLazyEnumerator < Test::Unit::TestCase
 
   def test_cycle
     a = Step.new(1..3)
-    assert_equal("1", a.cycle(2).map{|x| x.to_s}.first)
+    assert_equal('1', a.cycle(2).map{|x| x.to_s}.first)
     assert_equal(3, a.current)
-    assert_equal("1", a.lazy.cycle(2).map{|x| x.to_s}.first)
+    assert_equal('1', a.lazy.cycle(2).map{|x| x.to_s}.first)
     assert_equal(1, a.current)
   end
 
@@ -372,23 +372,23 @@ class TestLazyEnumerator < Test::Unit::TestCase
   end
 
   def test_inspect
-    return unless Enumerator.to_s == "Enumerator"
-    assert_equal("#<Enumerator::Lazy: 1..10>", (1..10).lazy.inspect)
+    return unless Enumerator.to_s == 'Enumerator'
+    assert_equal('#<Enumerator::Lazy: 1..10>', (1..10).lazy.inspect)
     assert_equal('#<Enumerator::Lazy: #<Enumerator: "foo":each_char>>',
-                 "foo".each_char.lazy.inspect)
-    assert_equal("#<Enumerator::Lazy: #<Enumerator::Lazy: 1..10>:map>",
+                 'foo'.each_char.lazy.inspect)
+    assert_equal('#<Enumerator::Lazy: #<Enumerator::Lazy: 1..10>:map>',
                  (1..10).lazy.map {}.inspect)
-    assert_equal("#<Enumerator::Lazy: #<Enumerator::Lazy: 1..10>:take(0)>",
+    assert_equal('#<Enumerator::Lazy: #<Enumerator::Lazy: 1..10>:take(0)>',
                  (1..10).lazy.take(0).inspect)
-    assert_equal("#<Enumerator::Lazy: #<Enumerator::Lazy: 1..10>:take(3)>",
+    assert_equal('#<Enumerator::Lazy: #<Enumerator::Lazy: 1..10>:take(3)>',
                  (1..10).lazy.take(3).inspect)
     assert_equal('#<Enumerator::Lazy: #<Enumerator::Lazy: "a".."c">:grep(/b/)>',
-                 ("a".."c").lazy.grep(/b/).inspect)
-    assert_equal("#<Enumerator::Lazy: #<Enumerator::Lazy: 1..10>:cycle(3)>",
+                 ('a'..'c').lazy.grep(/b/).inspect)
+    assert_equal('#<Enumerator::Lazy: #<Enumerator::Lazy: 1..10>:cycle(3)>',
                  (1..10).lazy.cycle(3).inspect)
-    assert_equal("#<Enumerator::Lazy: #<Enumerator::Lazy: 1..10>:cycle>",
+    assert_equal('#<Enumerator::Lazy: #<Enumerator::Lazy: 1..10>:cycle>',
                  (1..10).lazy.cycle.inspect)
-    assert_equal("#<Enumerator::Lazy: #<Enumerator::Lazy: 1..10>:cycle(3)>",
+    assert_equal('#<Enumerator::Lazy: #<Enumerator::Lazy: 1..10>:cycle(3)>',
                  (1..10).lazy.cycle(3).inspect)
     l = (1..10).lazy.map {}.flat_map {}.select {}.reject {}.grep(1).zip(?a..?c).take(10).take_while {}.drop(3).drop_while {}.cycle(3)
     ### Backport: Modified because I don't think the actual name we were called under in case of aliases is important enough to care

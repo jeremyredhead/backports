@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-unless ("abc".upto("def", true){} rescue false)
+unless ('abc'.upto('def', true){} rescue false)
   require 'backports/tools/alias_method_chain'
   require 'enumerator'
 

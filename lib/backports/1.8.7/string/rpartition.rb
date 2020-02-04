@@ -7,7 +7,7 @@ unless String.method_defined? :rpartition
     def rpartition(pattern)
       pattern = Backports.coerce_to(pattern, String, :to_str) unless pattern.is_a? Regexp
       i = rindex(pattern)
-      return ["", "", self] unless i
+      return ['', '', self] unless i
 
       if pattern.is_a? Regexp
         match = Regexp.last_match

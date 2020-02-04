@@ -3,15 +3,15 @@
 module Backports
   module StdLib
     class LoadedFeatures
-      if RUBY_VERSION >= "1.9"
+      if RUBY_VERSION >= '1.9'
         # Full paths are recorded in $LOADED_FEATURES.
         @@our_loads = {}
         # Check loaded features for one that matches "#{any of the load path}/#{feature}"
         def include?(feature)
           return true if @@our_loads[feature]
           # Assume backported features are Ruby libraries (i.e. not C)
-          @loaded ||= $LOADED_FEATURES.group_by{|p| File.basename(p, ".rb")}
-          if fullpaths = @loaded[File.basename(feature, ".rb")]
+          @loaded ||= $LOADED_FEATURES.group_by{|p| File.basename(p, '.rb')}
+          if fullpaths = @loaded[File.basename(feature, '.rb')]
             fullpaths.any?{|fullpath|
               base_dir, = fullpath.partition("/#{feature}")
               $LOAD_PATH.include?(base_dir)
@@ -40,7 +40,7 @@ module Backports
     class << self
       attr_accessor :extended_lib
 
-      def extend_relative relative_dir="stdlib"
+      def extend_relative relative_dir='stdlib'
         loaded = Backports::StdLib::LoadedFeatures.new
         dir = File.expand_path(relative_dir, File.dirname(caller.first.split(/:\d/,2).first))
         Dir.entries(dir).

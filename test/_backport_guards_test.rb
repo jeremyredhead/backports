@@ -94,7 +94,7 @@ class AAA_TestBackportGuards < Test::Unit::TestCase
   # Order super important!
   def test__2_backports_wont_override_unnecessarily
     before = digest
-    latest = "2.4.0"
+    latest = '2.4.0'
     if RUBY_VERSION > '1.8.6'
       main_version = [RUBY_VERSION, latest].min
       unless File.exist?(File.expand_path("../../lib/backports/#{main_version}.rb", __FILE__))
@@ -105,24 +105,24 @@ class AAA_TestBackportGuards < Test::Unit::TestCase
       assert_nil digest_delta(before, after)
     end
     if RUBY_VERSION < latest
-      require "backports"
+      require 'backports'
       after = digest
       assert !digest_delta(before, after).nil?
     end
   end
 
   def test_setlib_load_correctly_after_requiring_backports
-    path = File.expand_path("../../lib/backports/1.9.2/stdlib/matrix.rb", __FILE__)
+    path = File.expand_path('../../lib/backports/1.9.2/stdlib/matrix.rb', __FILE__)
     assert_equal false,  $LOADED_FEATURES.include?(path)
     assert_equal true,  require('matrix')
-    assert_equal true,  $bogus.include?("matrix")
+    assert_equal true,  $bogus.include?('matrix')
     assert_equal true,  $LOADED_FEATURES.include?(path)
     assert_equal false, require('matrix')
   end
 
   def test_setlib_load_correctly_before_requiring_backports_test
-    assert_equal true,  $bogus.include?("abbrev")
-    path = File.expand_path("../../lib/backports/2.0.0/stdlib/abbrev.rb", __FILE__)
+    assert_equal true,  $bogus.include?('abbrev')
+    path = File.expand_path('../../lib/backports/2.0.0/stdlib/abbrev.rb', __FILE__)
     assert_equal true,  $LOADED_FEATURES.include?(path)
     assert_equal false, require('abbrev')
   end
@@ -133,7 +133,7 @@ class AAA_TestBackportGuards < Test::Unit::TestCase
   end
 
   def test_load_correctly_new_libraries_test
-    path = File.expand_path("../../lib/backports/2.0.0/stdlib/fake_stdlib_lib.rb", __FILE__)
+    path = File.expand_path('../../lib/backports/2.0.0/stdlib/fake_stdlib_lib.rb', __FILE__)
     assert_equal false, $LOADED_FEATURES.include?(path)
     assert_equal true,  require('fake_stdlib_lib')
     assert_equal true,  $LOADED_FEATURES.include?(path)

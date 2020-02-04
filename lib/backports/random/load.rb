@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "backports/random/implementation"
+require 'backports/random/implementation'
 
 class Random
   include Backports::Random::Implementation

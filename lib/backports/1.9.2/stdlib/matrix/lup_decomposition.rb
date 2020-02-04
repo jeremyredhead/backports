@@ -95,7 +95,7 @@ class Matrix
 
     def solve b
       if (singular?)
-        Matrix.Raise Matrix::ErrNotRegular, "Matrix is singular."
+        Matrix.Raise Matrix::ErrNotRegular, 'Matrix is singular.'
       end
       if b.is_a? Matrix
         if (b.row_size != @row_size)

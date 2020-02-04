@@ -13,14 +13,14 @@
 # Original Documentation:: Gavin Sinclair (sourced from <i>Ruby in a Nutshell</i> (Matsumoto, O'Reilly))
 ##
 
-require "e2mmap.rb"
+require 'e2mmap.rb'
 
 module ExceptionForMatrix # :nodoc:
-  def_e2message(TypeError, "wrong argument type %s (expected %s)")
-  def_e2message(ArgumentError, "Wrong # of arguments(%d for %d)")
+  def_e2message(TypeError, 'wrong argument type %s (expected %s)')
+  def_e2message(ArgumentError, 'Wrong # of arguments(%d for %d)')
 
-  def_exception("ErrOperationNotDefined", "Operation(%s) can\\'t be defined: %s op %s") unless const_defined?(:ErrOperationNotDefined)
-  def_exception("ErrOperationNotImplemented", "Sorry, Operation(%s) not implemented: %s op %s") unless const_defined?(:ErrOperationNotImplemented)
+  def_exception('ErrOperationNotDefined', "Operation(%s) can\\'t be defined: %s op %s") unless const_defined?(:ErrOperationNotDefined)
+  def_exception('ErrOperationNotImplemented', 'Sorry, Operation(%s) not implemented: %s op %s') unless const_defined?(:ErrOperationNotImplemented)
 end
 
 #
@@ -125,8 +125,8 @@ class Matrix
   include Enumerable
   include ExceptionForMatrix
   unless autoload?(:EigenvalueDecomposition)
-    autoload :EigenvalueDecomposition, File.expand_path("../matrix/eigenvalue_decomposition", __FILE__) if 42.respond_to?(:conj)
-    autoload :LUPDecomposition, File.expand_path("../matrix/lup_decomposition", __FILE__)
+    autoload :EigenvalueDecomposition, File.expand_path('../matrix/eigenvalue_decomposition', __FILE__) if 42.respond_to?(:conj)
+    autoload :LUPDecomposition, File.expand_path('../matrix/lup_decomposition', __FILE__)
   end
 
   # instance creations
@@ -289,8 +289,8 @@ class Matrix
   #     => Matrix[[0, 0, 0], [0, 0, 0]]
   #
   def Matrix.empty(row_size = 0, column_size = 0)
-    Matrix.Raise ArgumentError, "One size must be 0" if column_size != 0 && row_size != 0
-    Matrix.Raise ArgumentError, "Negative size" if column_size < 0 || row_size < 0
+    Matrix.Raise ArgumentError, 'One size must be 0' if column_size != 0 && row_size != 0
+    Matrix.Raise ArgumentError, 'Negative size' if column_size < 0 || row_size < 0
 
     new([[]]*row_size, column_size)
   end
@@ -842,7 +842,7 @@ class Matrix
   def +(m)
     case m
     when Numeric
-      Matrix.Raise ErrOperationNotDefined, "+", self.class, m.class
+      Matrix.Raise ErrOperationNotDefined, '+', self.class, m.class
     when Vector
       m = self.class.column_vector(m)
     when Matrix
@@ -869,7 +869,7 @@ class Matrix
   def -(m)
     case m
     when Numeric
-      Matrix.Raise ErrOperationNotDefined, "-", self.class, m.class
+      Matrix.Raise ErrOperationNotDefined, '-', self.class, m.class
     when Vector
       m = self.class.column_vector(m)
     when Matrix
@@ -992,7 +992,7 @@ class Matrix
       v, d, v_inv = eigensystem
       v * self.class.diagonal(*d.each(:diagonal).map{|e| e ** other}) * v_inv
     else
-      Matrix.Raise ErrOperationNotDefined, "**", self.class, other.class
+      Matrix.Raise ErrOperationNotDefined, '**', self.class, other.class
     end
   end
 
@@ -1340,8 +1340,8 @@ end
       "#{self.class}.empty(#{row_size}, #{column_size})"
     else
       "#{self.class}[" + @rows.collect{|row|
-        "[" + row.collect{|e| e.to_s}.join(", ") + "]"
-      }.join(", ")+"]"
+        '[' + row.collect{|e| e.to_s}.join(', ') + ']'
+      }.join(', ')+']'
     end
   end
 
@@ -1440,7 +1440,7 @@ end
       when Numeric
         Scalar.new(@value + other)
       when Vector, Matrix
-        Scalar.Raise ErrOperationNotDefined, "+", @value.class, other.class
+        Scalar.Raise ErrOperationNotDefined, '+', @value.class, other.class
       else
         apply_through_coercion(other, __method__)
       end
@@ -1451,7 +1451,7 @@ end
       when Numeric
         Scalar.new(@value - other)
       when Vector, Matrix
-        Scalar.Raise ErrOperationNotDefined, "-", @value.class, other.class
+        Scalar.Raise ErrOperationNotDefined, '-', @value.class, other.class
       else
         apply_through_coercion(other, __method__)
       end
@@ -1473,7 +1473,7 @@ end
       when Numeric
         Scalar.new(@value / other)
       when Vector
-        Scalar.Raise ErrOperationNotDefined, "/", @value.class, other.class
+        Scalar.Raise ErrOperationNotDefined, '/', @value.class, other.class
       when Matrix
         self * other.inverse
       else
@@ -1486,10 +1486,10 @@ end
       when Numeric
         Scalar.new(@value ** other)
       when Vector
-        Scalar.Raise ErrOperationNotDefined, "**", @value.class, other.class
+        Scalar.Raise ErrOperationNotDefined, '**', @value.class, other.class
       when Matrix
         #other.powered_by(self)
-        Scalar.Raise ErrOperationNotImplemented, "**", @value.class, other.class
+        Scalar.Raise ErrOperationNotImplemented, '**', @value.class, other.class
       else
         apply_through_coercion(other, __method__)
       end
@@ -1618,7 +1618,7 @@ class Vector
   # Iterate over the elements of this vector and +v+ in conjunction.
   #
   def each2(v) # :yield: e1, e2
-    raise TypeError, "Integer is not like Vector" if v.kind_of?(Integer)
+    raise TypeError, 'Integer is not like Vector' if v.kind_of?(Integer)
     Vector.Raise ErrDimensionMismatch if size != v.size
     return to_enum(:each2, v) unless block_given?
     size.times do |i|
@@ -1632,7 +1632,7 @@ class Vector
   # in conjunction.
   #
   def collect2(v) # :yield: e1, e2
-    raise TypeError, "Integer is not like Vector" if v.kind_of?(Integer)
+    raise TypeError, 'Integer is not like Vector' if v.kind_of?(Integer)
     Vector.Raise ErrDimensionMismatch if size != v.size
     return to_enum(:collect2, v) unless block_given?
     Array.new(size) do |i|
@@ -1686,7 +1686,7 @@ class Vector
     when Matrix
       Matrix.column_vector(self) * x
     when Vector
-      Vector.Raise ErrOperationNotDefined, "*", self.class, x.class
+      Vector.Raise ErrOperationNotDefined, '*', self.class, x.class
     else
       apply_through_coercion(x, __method__)
     end
@@ -1737,7 +1737,7 @@ class Vector
       els = @elements.collect{|e| e / x}
       self.class.elements(els, false)
     when Matrix, Vector
-      Vector.Raise ErrOperationNotDefined, "/", self.class, x.class
+      Vector.Raise ErrOperationNotDefined, '/', self.class, x.class
     else
       apply_through_coercion(x, __method__)
     end
@@ -1800,7 +1800,7 @@ class Vector
   #
   def normalize
     n = magnitude
-    raise ZeroVectorError, "Zero vectors can not be normalized" if n == 0
+    raise ZeroVectorError, 'Zero vectors can not be normalized' if n == 0
     self / n
   end
 
@@ -1861,14 +1861,14 @@ class Vector
   # Overrides Object#to_s
   #
   def to_s
-    "Vector[" + @elements.join(", ") + "]"
+    'Vector[' + @elements.join(', ') + ']'
   end
 
   #
   # Overrides Object#inspect
   #
   def inspect
-    "Vector" + @elements.inspect
+    'Vector' + @elements.inspect
   end
 end
 end

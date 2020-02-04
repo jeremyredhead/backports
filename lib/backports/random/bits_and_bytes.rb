@@ -35,7 +35,7 @@ module Backports
       def random_bytes(nb)
         nb_32_bits = (nb + 3) / 4
         random = nb_32_bits.times.map { random_32_bits }
-        random.pack("L" * nb_32_bits)[0, nb]
+        random.pack('L' * nb_32_bits)[0, nb]
       end
 
       def state_as_bignum

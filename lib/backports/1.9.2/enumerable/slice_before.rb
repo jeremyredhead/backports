@@ -9,7 +9,7 @@ unless Enumerable.method_defined? :slice_before
       if block_given?
         has_init = !(arg.equal? Backports::Undefined)
       else
-        raise ArgumentError, "wrong number of arguments (0 for 1)" if arg.equal? Backports::Undefined
+        raise ArgumentError, 'wrong number of arguments (0 for 1)' if arg.equal? Backports::Undefined
         block = Proc.new{|elem| arg === elem }
       end
       Enumerator.new do |yielder|

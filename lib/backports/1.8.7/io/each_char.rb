@@ -6,7 +6,7 @@ unless IO.method_defined? :each_char
   class IO
     def each_char
       return to_enum(:each_char) unless block_given?
-      if $KCODE == "UTF-8"
+      if $KCODE == 'UTF-8'
         lookup = 7.downto(4)
         while c = read(1) do
           n = c[0]

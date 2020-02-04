@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "backports/tools/arguments"
-require "backports/random/MT19937"
-require "backports/random/bits_and_bytes"
+require 'backports/tools/arguments'
+require 'backports/random/MT19937'
+require 'backports/random/bits_and_bytes'
 
 module Backports
   class Random
@@ -42,7 +42,7 @@ module Backports
 
       def bytes(nb)
         nb = Backports.coerce_to_int(nb)
-        raise ArgumentError, "negative size" if nb < 0
+        raise ArgumentError, 'negative size' if nb < 0
         @mt.random_bytes(nb)
       end
 

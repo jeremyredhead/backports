@@ -5,14 +5,14 @@ unless Enumerable.method_defined? :chunk
 
   module Enumerable
     def chunk(initial_state = nil, &original_block)
-      raise ArgumentError, "no block given" unless block_given?
+      raise ArgumentError, 'no block given' unless block_given?
       ::Enumerator.new do |yielder|
         previous = nil
         accumulate = []
         block = initial_state.nil? ? original_block : Proc.new{|val| original_block.call(val, initial_state.clone)}
         each do |val|
           key = block.call(val)
-          if key.nil? || (key.is_a?(Symbol) && key.to_s[0,1] == "_")
+          if key.nil? || (key.is_a?(Symbol) && key.to_s[0,1] == '_')
             yielder.yield [previous, accumulate] unless accumulate.empty?
             accumulate = []
             previous = nil
@@ -21,7 +21,7 @@ unless Enumerable.method_defined? :chunk
             when :_alone
               yielder.yield [key, [val]]
             else
-              raise RuntimeError, "symbol beginning with an underscore are reserved"
+              raise RuntimeError, 'symbol beginning with an underscore are reserved'
             end
           else
             if previous.nil? || previous == key

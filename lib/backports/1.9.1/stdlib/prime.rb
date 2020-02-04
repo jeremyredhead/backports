@@ -13,8 +13,8 @@
 #   Yuki Sonoda
 #
 
-require "singleton"
-require "forwardable"
+require 'singleton'
+require 'forwardable'
 
 class Integer
   # Re-composes a prime factorization and returns the product.

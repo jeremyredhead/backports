@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-source "http://rubygems.org"
+source 'http://rubygems.org'
 
 # Declare your gem's dependencies in backports.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
@@ -12,7 +12,7 @@ group :test do
   gem 'activesupport', '~>3.2.0'
   gem 'minitest', '< 5.0.0', :require => false
   gem 'mspec'
-  gem "rake"
+  gem 'rake'
   gem 'test-unit', '~>2.1.1.0'
 end
 
