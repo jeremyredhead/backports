@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Enumerable.method_defined? :take
   require 'backports/1.8.7/enumerable/first'
 

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class OpenStruct
   def [](name)
     @table[name.to_sym]

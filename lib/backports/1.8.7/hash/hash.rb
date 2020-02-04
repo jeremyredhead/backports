@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Hash
   def hash
     h = 0

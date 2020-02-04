@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Enumerable.method_defined? :each_with_object
   module Enumerable
     def each_with_object(memo)

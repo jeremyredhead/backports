@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'backports/tools/make_block_optional'
 require 'enumerator' unless Enumerable.method_defined? :each_cons
 

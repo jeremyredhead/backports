@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Symbol < Comparable
   class Symbol
     alias_method :dont_override_equal_please, :==

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Enumerable
   unless method_defined? :sum
     require 'backports/1.8.7/enumerable/inject'

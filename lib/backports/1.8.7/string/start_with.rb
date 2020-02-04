@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless String.method_defined? :start_with?
   class String
     def start_with?(*prefixes)

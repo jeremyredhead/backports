@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Comparable.method_defined? :clamp
   require 'backports/tools/arguments'
 

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless ARGF.respond_to? :each_char
   require 'backports/tools/alias_method'
   require 'enumerator'

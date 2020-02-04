@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless File.const_defined? :NULL
   module File::Constants
     platform = RUBY_PLATFORM

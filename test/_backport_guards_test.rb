@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'stringio'
 if RUBY_VERSION < '1.9'
   require 'enumerator'

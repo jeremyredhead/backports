@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Kernel.method_defined? :public_method
   module Kernel
     def public_method(meth)

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless String.method_defined? :undump
   class String
     def undump

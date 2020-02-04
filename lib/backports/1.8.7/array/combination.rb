@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Array.method_defined? :combination
   require 'backports/tools/arguments'
   require 'enumerator'

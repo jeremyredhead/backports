@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Backports
   class << self
     def float_to_integer(float)

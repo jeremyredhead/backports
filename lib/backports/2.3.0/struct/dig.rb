@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Struct.method_defined? :dig
   class Struct
     def dig(key, *rest)

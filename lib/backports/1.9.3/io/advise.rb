@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless IO.method_defined? :advise
   require 'backports/tools/arguments'
 

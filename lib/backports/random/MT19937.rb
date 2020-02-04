@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Backports
   class Random
     # An implementation of Mersenne Twister MT19937 in Ruby

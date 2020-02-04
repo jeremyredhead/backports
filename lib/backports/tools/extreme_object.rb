@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Backports
   MOST_EXTREME_OBJECT_EVER = Object.new # :nodoc:
   class << MOST_EXTREME_OBJECT_EVER

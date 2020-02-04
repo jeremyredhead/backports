@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Backports
   # Helper method to coerce a value into a specific class.
   # Raises a TypeError if the coercion fails or the returned value

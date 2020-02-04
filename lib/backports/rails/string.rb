@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class String
   # Standard in rails. See official documentation[http://api.rubyonrails.org/classes/ActiveSupport/CoreExtensions/String/Inflections.html]
   def camelize(first_letter = :upper)

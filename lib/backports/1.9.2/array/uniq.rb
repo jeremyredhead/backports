@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless [1,2].uniq{}.size == 1
   require 'backports/tools/alias_method_chain'
 

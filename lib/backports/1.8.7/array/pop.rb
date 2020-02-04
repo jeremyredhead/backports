@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless ([1].pop(1) rescue false)
   require 'backports/tools/alias_method_chain'
   require 'backports/tools/arguments'

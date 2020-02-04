@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Array.method_defined? :select!
   class Array
     def select!

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless ([1].index{true} rescue false)
   require 'backports/tools/alias_method_chain'
   require 'enumerator'

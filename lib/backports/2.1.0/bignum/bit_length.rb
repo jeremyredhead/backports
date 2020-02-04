@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Integer.method_defined?(:bit_length) || Bignum.method_defined?(:bit_length)
   require 'backports/2.0.0/range/bsearch'
   class Bignum

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Hash.method_defined? :dig
   class Hash
     def dig(key, *rest)

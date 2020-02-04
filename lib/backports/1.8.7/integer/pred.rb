@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Integer.method_defined? :pred
   class Integer
     def pred

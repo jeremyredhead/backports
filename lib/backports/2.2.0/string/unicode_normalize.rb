@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Adapted from CRuby
 
 unless String.method_defined? :unicode_normalize

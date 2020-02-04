@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless String.method_defined? :each_char
   require 'backports/tools/alias_method'
   require 'enumerator'

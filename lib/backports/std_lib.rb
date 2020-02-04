@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Will intercept future and past 'require' calls of std_lib
 # and load additionally the updated libraries.
 require 'backports/tools/std_lib'

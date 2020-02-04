@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Kernel.method_defined? :public_send
   module Kernel
     def public_send(method, *args, &block)

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Symbol.method_defined? :<=>
   class Symbol
     def <=>(with)

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Hash
   # Standard in rails. See official documentation[http://api.rubyonrails.org/classes/ActiveSupport/CoreExtensions/Hash/Keys.html]
   def reverse_merge(other_hash)

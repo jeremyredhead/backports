@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Hash.method_defined? :<
   require 'backports/tools/arguments'
   class Hash

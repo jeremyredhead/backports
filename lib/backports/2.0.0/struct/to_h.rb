@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Struct.method_defined? :to_h
   class Struct
     def to_h

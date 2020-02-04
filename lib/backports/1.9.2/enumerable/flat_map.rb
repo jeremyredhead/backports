@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Enumerable.method_defined? :flat_map
   module Enumerable
     def flat_map

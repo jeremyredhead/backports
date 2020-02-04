@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Array.method_defined? :repeated_permutation
   require 'backports/tools/arguments'
   require 'backports/1.8.7/array/index'

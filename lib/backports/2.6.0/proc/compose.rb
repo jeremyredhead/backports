@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Proc.method_defined?(:<<) || Proc.method_defined?(:>>)
   class Proc
     def <<(g)

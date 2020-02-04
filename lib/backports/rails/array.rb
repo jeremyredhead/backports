@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Array
   # See official documentation[http://api.rubyonrails.org/classes/ActiveSupport/CoreExtensions/Array/ExtractOptions.html]
   def extract_options!

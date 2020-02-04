@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 if Enumerable.instance_method(:to_a).arity.zero?
   require 'backports/tools/alias_method_chain'
   require 'enumerator'

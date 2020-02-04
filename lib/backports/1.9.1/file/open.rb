@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 begin
   File.open(__FILE__, :mode => 'r'){}
 rescue TypeError

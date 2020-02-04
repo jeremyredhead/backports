@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Array.method_defined? :cycle
   require 'backports/tools/arguments'
 

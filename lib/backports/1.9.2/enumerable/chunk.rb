@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Enumerable.method_defined? :chunk
   require 'backports/1.9.1/enumerator/new'
 

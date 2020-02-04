@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless ("check partition".partition(" ") rescue false)
   require 'backports/tools/alias_method_chain'
   require 'backports/tools/arguments'

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Dir
   Backports::EXCLUDED_CHILDREN = ['.', '..'].freeze unless Backports.const_defined?('EXCLUDED_CHILDREN')
   def self.each_child(*args)

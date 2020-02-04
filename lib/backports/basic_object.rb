@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Note: Must be required explicitely!
 # This is a best attempt to fake BasicObject in Ruby 1.8.x
 # What you do get:

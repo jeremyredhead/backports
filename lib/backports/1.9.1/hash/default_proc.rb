@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Hash.method_defined? :default_proc=
   require 'backports/tools/arguments'
 

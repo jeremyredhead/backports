@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless IO.respond_to? :try_convert
   require 'backports/tools/arguments'
 

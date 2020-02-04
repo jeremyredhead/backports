@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This is copied & modified from MRI
 require './test/test_helper'
 

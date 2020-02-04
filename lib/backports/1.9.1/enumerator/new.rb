@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 Enumerator = Enumerable::Enumerator unless Object.const_defined? :Enumerator # Standard in ruby 1.9
 
 unless (Enumerator.new{} rescue false)

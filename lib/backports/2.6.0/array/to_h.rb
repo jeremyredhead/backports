@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'backports/2.1.0/array/to_h' unless Array.method_defined? :to_h
 
 if [[:need, true]].to_h { [:need, false] } [:need]

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless Enumerable.method_defined? :minmax_by
   require 'backports/tools/extreme_object'
   require 'enumerator'

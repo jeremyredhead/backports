@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 unless (Math.log(2, 2) rescue false)
   require 'backports/tools/alias_method_chain'
   require 'backports/tools/arguments'

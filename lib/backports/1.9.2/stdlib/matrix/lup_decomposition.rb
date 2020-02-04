@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class Matrix
   # Adapted from JAMA: http://math.nist.gov/javanumerics/jama/
 
