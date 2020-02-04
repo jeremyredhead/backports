@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Enumerable.method_defined? :count
   require 'backports/tools/arguments'
 

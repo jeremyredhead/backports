@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 fd = IO.sysopen(__FILE__)
 begin
   IO.open(fd, :mode => 'r'){}

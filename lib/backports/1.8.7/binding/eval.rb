@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Binding.method_defined? :eval
   class Binding
     def eval(expr, *arg)

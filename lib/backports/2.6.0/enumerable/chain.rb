@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Enumerable.method_defined? :chain
   module Enumerable
     def chain(*enums)

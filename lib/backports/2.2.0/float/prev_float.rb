@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Float.method_defined? :prev_float
   require 'backports/tools/float_integer_conversion'
   require 'backports/1.9.2/float/infinity'

@@ -1,4 +1,5 @@
 # encoding: utf-8
+# frozen_string_literal: true
 
 class String
   if "é".length > 1 && "é".scan(/./).length == 1

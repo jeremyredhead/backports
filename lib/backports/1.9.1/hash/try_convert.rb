@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Hash.respond_to? :try_convert
   require 'backports/tools/arguments'
 

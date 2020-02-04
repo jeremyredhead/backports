@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Method.method_defined? :curry
   require 'backports/1.9.1/proc/curry'
 

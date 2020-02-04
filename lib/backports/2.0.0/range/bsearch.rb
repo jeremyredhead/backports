@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Range.method_defined? :bsearch
   require 'backports/tools/float_integer_conversion'
 

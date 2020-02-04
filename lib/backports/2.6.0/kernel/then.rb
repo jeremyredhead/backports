@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Kernel.method_defined? :then
   require 'backports/2.5.0/kernel/yield_self'
 

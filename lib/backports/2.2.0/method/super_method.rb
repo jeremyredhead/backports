@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Method.method_defined? :super_method
   require 'backports/1.8.7/array/find_index'
 

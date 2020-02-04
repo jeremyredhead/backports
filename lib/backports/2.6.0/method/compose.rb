@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Method.method_defined?(:<<) || Method.method_defined?(:>>)
   require 'backports/2.6.0/proc/compose'
 

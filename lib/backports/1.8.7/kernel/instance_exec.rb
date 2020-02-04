@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Object.method_defined?(:instance_exec)
   module Kernel
     def instance_exec(*arg, &block)

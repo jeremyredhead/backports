@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Enumerable.method_defined? :slice_when
   require 'backports/tools/arguments'
   require 'backports/1.9.1/enumerator/new'

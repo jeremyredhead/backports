@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Kernel.method_defined? :singleton_class
   module Kernel
     def singleton_class

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless (__callee__ || true rescue false)
   require 'backports/1.8.7/kernel/__method__'
 

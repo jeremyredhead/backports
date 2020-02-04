@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Object.const_defined? :StopIteration
   require 'backports/tools/alias_method_chain'
 

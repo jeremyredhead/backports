@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 if RUBY_VERSION < '1.8.7'
   require 'backports/tools/make_block_optional'
 

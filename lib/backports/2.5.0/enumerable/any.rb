@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 if Enumerable.instance_method(:any?).arity == 0
   require 'backports/tools/alias_method_chain'
   require 'backports/tools/arguments'

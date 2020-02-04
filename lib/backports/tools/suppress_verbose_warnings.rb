@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Backports
   def self.suppress_verbose_warnings
     before = $VERBOSE

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Set
   def delete_if
     block_given? or return enum_for(__method__)

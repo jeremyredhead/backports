@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require './test/test_helper'
 
 class BitLengthTest < Test::Unit::TestCase

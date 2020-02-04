@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Method.method_defined? :name
   require 'backports/tools/alias_method_chain'
 

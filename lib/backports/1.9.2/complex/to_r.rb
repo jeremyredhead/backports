@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 if Object.const_defined? :Complex
   unless Complex.method_defined? :to_r
     class Complex

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Hash.method_defined? :fetch_values
   class Hash
     def fetch_values(*keys, &block)

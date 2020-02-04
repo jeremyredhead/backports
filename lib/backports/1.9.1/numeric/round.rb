@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 if Numeric.instance_method(:round).arity.zero?
   require 'backports/tools/arguments'
   require 'backports/tools/alias_method_chain'

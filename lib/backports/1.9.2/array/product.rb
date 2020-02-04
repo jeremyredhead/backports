@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 if ([1].product([2]){break false} rescue true)
   require 'backports/tools/arguments'
   require 'backports/tools/alias_method_chain'

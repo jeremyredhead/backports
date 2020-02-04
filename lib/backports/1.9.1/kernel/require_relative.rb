@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Kernel.private_method_defined? :require_relative
   require 'backports/tools/path'
 

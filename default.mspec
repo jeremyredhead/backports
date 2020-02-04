@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 if (Backports::TARGET_VERSION rescue false) # Conf loaded at different times, not sure why
   class MSpecScript
     # The set of substitutions to transform a spec filename

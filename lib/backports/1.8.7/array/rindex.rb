@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless ([1].rindex{true} rescue false)
   class Array
     require 'backports/tools/alias_method_chain'

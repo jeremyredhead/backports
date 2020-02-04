@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'backports/tools/alias_method'
 require 'backports/1.9.1/enumerable/each_with_object'
 

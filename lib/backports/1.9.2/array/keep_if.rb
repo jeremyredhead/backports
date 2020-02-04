@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Array.method_defined? :keep_if
   class Array
     def keep_if

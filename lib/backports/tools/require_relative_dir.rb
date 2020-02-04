@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Backports
   def self.require_relative_dir
     dir = caller.first.split(/\.rb:\d/,2).first

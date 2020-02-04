@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class File
   module Constants
     # In Ruby 1.8, it is defined only on Windows

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Backports
   # Safe alias_method that will only alias if the source exists and destination doesn't
   def self.alias_method(mod, new_name, old_name)

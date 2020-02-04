@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Hash.method_defined? :keep_if
   class Hash
     def keep_if

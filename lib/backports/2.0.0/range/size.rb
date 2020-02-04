@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Range.method_defined? :size
   class Range
     def size

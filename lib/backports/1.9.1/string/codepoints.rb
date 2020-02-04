@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless String.method_defined? :codepoints
   class String
     def codepoints

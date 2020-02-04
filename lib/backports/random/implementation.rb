@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require "backports/tools/arguments"
 require "backports/random/MT19937"
 require "backports/random/bits_and_bytes"

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Array.method_defined? :sort_by!
   class Array
     def sort_by!

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 # require this file to load all the backports
 # NOTE: This is NOT recommended.
 # Best to require the specific backports you need

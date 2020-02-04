@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'backports/2.1.0/enumerable/to_h' unless Enumerable.method_defined? :to_h
 
 if Enumerable.instance_method(:to_h).bind([[:need, true]]).call { [:need, false] } [:need]

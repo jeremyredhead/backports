@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Array
   unless method_defined? :difference
     require 'backports/1.8.7/enumerable/inject'

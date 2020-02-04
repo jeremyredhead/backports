@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Array.method_defined? :rotate
   class Array
     def rotate(n=1)

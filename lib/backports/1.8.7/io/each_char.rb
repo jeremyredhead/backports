@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless IO.method_defined? :each_char
   require 'enumerator'
 

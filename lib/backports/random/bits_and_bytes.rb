@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Backports
   class Random
     # Supplement the MT19937 class with methods to do

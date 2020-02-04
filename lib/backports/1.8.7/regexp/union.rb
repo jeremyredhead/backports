@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless (Regexp.union(%w(a b)) rescue false)
   require 'backports/tools/alias_method_chain'
 

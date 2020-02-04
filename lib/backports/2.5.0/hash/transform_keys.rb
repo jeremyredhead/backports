@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Hash
   def transform_keys
     return to_enum(:transform_keys){ size } unless block_given?

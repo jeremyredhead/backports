@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Enumerable.method_defined? :find_index
   require 'backports/tools/arguments'
   require 'enumerator'

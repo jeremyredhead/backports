@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Enumerable.method_defined? :grep_v
   require 'backports/1.9.2/enumerable/each_entry'
 

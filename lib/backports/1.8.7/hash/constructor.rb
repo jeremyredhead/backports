@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless (Hash[[[:test, :test]]] rescue false)
   require 'backports/tools/arguments'
 

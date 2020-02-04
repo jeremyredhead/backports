@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'backports/1.8.7/enumerable/one'
 
 if Enumerable.instance_method(:one?).arity == 0

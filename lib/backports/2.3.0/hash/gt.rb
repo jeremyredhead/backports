@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Hash.method_defined? :>
   require 'backports/tools/arguments'
   require 'backports/2.3.0/hash/lt'

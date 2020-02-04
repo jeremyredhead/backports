@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Float.method_defined? :next_float
   require 'backports/tools/float_integer_conversion'
 

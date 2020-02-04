@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'backports/2.0.0/hash/to_h' unless Hash.method_defined? :to_h
 
 if {:n => true}.to_h{[:ok, true]}[:n]

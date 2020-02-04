@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Backports
   TARGET_VERSION = caller.each{|c| break $1 if c =~ /set_version\/(\d\.\d\.\d)\.rb/}
 end

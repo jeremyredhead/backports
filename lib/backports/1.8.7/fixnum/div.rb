@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Integer.method_defined?(:div) || Fixnum.method_defined?(:div)
   class Fixnum
     def div(n)

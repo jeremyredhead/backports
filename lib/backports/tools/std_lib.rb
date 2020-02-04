@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Backports
   module StdLib
     class LoadedFeatures

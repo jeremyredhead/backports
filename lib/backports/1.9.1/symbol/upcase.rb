@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Symbol.method_defined? :upcase
   class Symbol
     def upcase

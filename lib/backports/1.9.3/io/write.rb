@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless IO.respond_to? :write
   require 'backports/tools/io'
 

@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 require 'backports/tools/arguments'
 module Backports
   # Used internally to combine {IO|File} options hash into mode (String or Integer)

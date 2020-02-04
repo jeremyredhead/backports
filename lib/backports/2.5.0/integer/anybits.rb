@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Integer
   require 'backports/tools/arguments'
 

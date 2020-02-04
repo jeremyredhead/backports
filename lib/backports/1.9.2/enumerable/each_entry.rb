@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Enumerable.method_defined? :each_entry
   module Enumerable
     def each_entry(*pass)

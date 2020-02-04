@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless File.method_defined? :size
   class File
     def size

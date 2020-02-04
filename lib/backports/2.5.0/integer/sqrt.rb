@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 class Integer
   require 'backports/tools/arguments'
   require 'backports/2.1.0/bignum/bit_length'

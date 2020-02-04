@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Hash.method_defined? :assoc
   class Hash
     def assoc(key)

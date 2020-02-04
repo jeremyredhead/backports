@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Object.const_defined? :Enumerator
   require 'enumerator'
   unless Enumerable::Enumerator.method_defined? :with_index

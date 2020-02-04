@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Object.const_defined? :Enumerator
   require 'backports/tools/make_block_optional'
   require 'enumerator'

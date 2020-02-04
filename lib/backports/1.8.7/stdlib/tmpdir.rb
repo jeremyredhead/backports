@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Dir.respond_to? :mktmpdir
   class << Dir
     def mktmpdir(prefix_suffix=nil, tmpdir=nil)

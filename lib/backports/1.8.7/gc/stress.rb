@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless GC.respond_to? :stress
   def GC.stress
     false

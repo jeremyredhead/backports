@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless (__method__ || true rescue false)
   module Kernel
     def __method__

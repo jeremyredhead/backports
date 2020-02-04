@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 unless Proc.method_defined? :lambda?
   require 'backports/tools/alias_method_chain'
 

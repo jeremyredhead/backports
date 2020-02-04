@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 module Backports
   # Modified to avoid polluting Module if so desired
   # (from Rails)
